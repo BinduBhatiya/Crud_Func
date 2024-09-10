@@ -28,6 +28,7 @@ def edit(request):
     id = request.GET['id']
     data1 = data2 = "not_available"
     for data in Entry.objects.filter(id=id):
+        #id = data.id
         data1 = data.data1
         data2 = data.data2
     return render(request,"edit.html",{'id':id,'data1':data1,'data2':data2})
