@@ -28,17 +28,16 @@ def edit(request):
     id = request.GET['id']
     data1 = data2 = "not_available"
     for data in Entry.objects.filter(id=id):
-        id = data.id
         data1 = data.data1
         data2 = data.data2
     return render(request,"edit.html",{'id':id,'data1':data1,'data2':data2})
 
 def RecordEdited(request):
     if request.method == 'POST':
-        id = request.POST['id']
+        id = id = request.POST['id']
         data1 = request.POST['data1']
         data2 = request.POST['data2']
-        Entry.objects.filter(id=id).update(id = id, data1 = data1,data2 = data2)
+        Entry.objects.filter(id=id).update(data1 = data1,data2 = data2)
         return HttpResponseRedirect("show")
     else:
         return HttpResponse('<h1>404 not found</h1>')
